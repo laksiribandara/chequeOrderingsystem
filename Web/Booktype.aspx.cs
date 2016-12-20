@@ -16,7 +16,7 @@ namespace Cheque_Ordering_system.Web
             {
                 if (!FormSecurity.IsAuthUser(Session["EmpCode"].ToString(), "CHQAD"))
                 {
-                    Response.Redirect("NotAuthorized.aspx", false);
+                    Response.Redirect("NotAuthorized.aspx", false);    
                 }
             }
         }
