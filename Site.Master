@@ -1,0 +1,232 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Cheque_Ordering_system.SiteMaster" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <link href="Styles/site.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/Tab.css" rel="stylesheet" type="text/css" />
+    <link href="~/styles/Styles.css" rel="stylesheet" type="text/css" />
+    <title>Cheque Ordering System</title>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+        <style type="text/css">
+
+            .style1
+            {
+                margin-top: 0px;
+            }
+        </style>
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+<!--
+        var timeout = 500;
+        var closetimer = 0;
+        var ddmenuitem = 0;
+
+        // open hidden layer
+        function mopen(id) {
+            // cancel close timer
+            mcancelclosetime();
+
+            // close old layer
+            if (ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+
+            // get new layer and show it
+            ddmenuitem = document.getElementById(id);
+            ddmenuitem.style.visibility = 'visible';
+
+        }
+        // close showed layer
+        function mclose() {
+            if (ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+        }
+
+        // go close timer
+        function mclosetime() {
+            closetimer = window.setTimeout(mclose, timeout);
+        }
+
+        // cancel close timer
+        function mcancelclosetime() {
+            if (closetimer) {
+                window.clearTimeout(closetimer);
+                closetimer = null;
+            }
+        }
+
+        // close layer when click-out
+        document.onclick = mclose; 
+// -->
+    </script>
+</head>
+<body>
+    <body style="font-weight: 700">
+    <form id="form1" runat="server" class="container">
+   <%-- <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" AsyncPostBackTimeout="3600">
+    </asp:ToolkitScriptManager>--%>
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" AsyncPostBackTimeout="3600">
+    </asp:ToolkitScriptManager>
+    <div class="header">
+        <div class="wrapper">
+            <div class="header-wrapper">
+                <div>
+                    <table width="1000px" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>
+                                <div>
+                                    <asp:Image ID="logonew" runat="server" ImageUrl="~/Images/TopBanner.jpg" AlternateText="logo"
+                                        Width="100%" BorderWidth="0" BorderStyle="None" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="new">
+                                <div style="float: left; width: 119px; height: 20px">
+                                    <asp:LinkButton ID="libHome" runat="server" Font-Underline="False" CausesValidation="False"
+                                        Style="color: Black; font-family: Verdana; font-size: 12px; text-align: left;"
+                                        ToolTip="Click to Home" onclick="libHome_Click"> &nbsp; &nbsp; &nbsp; Home  &nbsp; &nbsp; &nbsp;</asp:LinkButton>
+                                </div>
+                                <div id="Div1" style="float: right; width: 113px; height: 20px;">
+                                    <asp:LinkButton ID="libLogout" runat="server" Font-Underline="False" CausesValidation="False"
+                                        Style="color: Black; text-align: right; font-family: Verdana; font-size: 12px"
+                                        ToolTip="Click to Log out" onclick="libLogout_Click">|  &nbsp; &nbsp; &nbsp;Log out &nbsp; &nbsp; &nbsp;</asp:LinkButton>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width: 1000px;">
+                        <tr>
+                            <td id="Td1" runat="server" width="100px">
+                                <div align="left">
+
+                                </div>
+                            </td>
+                            <td>
+                                <div align="right">                                  
+                                  
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <asp:Label ID="lblLoggedUserStaffNo" runat="server" Style="color: #000000; font-weight: bold;"
+                                        ForeColor="blue"></asp:Label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <asp:Label ID="lblUserInfo" runat="server" Style="color: #000000; font-weight: bold;"></asp:Label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="mainLink" style="max-width: 940px; margin-bottom: 19px;">
+                    <ul id="sddm" style="margin-bottom: 19px;">
+                        <li runat="server" id="liAdmin"><a href="#" onmouseover="mopen('m2')" onmouseout="mclosetime()">
+                            Admin </a>
+                            <div id="m2" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                             <asp:LinkButton ID="lbbooktype" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/Booktype.aspx" Visible="false">
+                            Book Type</asp:LinkButton>                              
+                             <asp:LinkButton ID="lbbookcol" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/BookcollectType.aspx" Visible="false">
+                            Book Collect Type</asp:LinkButton>                                                                        
+                            </div>                                                
+                        </li>
+                        <%--<li runat="server" id="liEmployee"><a href="#" onmouseover="mopen('m3')" onmouseout="mclosetime()">
+                            My Attendance</a>
+                            <div id="m3" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                                <asp:LinkButton ID="lbStaffAdttencedetails" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/staffAdttencedetails.aspx " Visible="false">                            
+                            Attendance Amendment</asp:LinkButton>
+                                <asp:LinkButton ID="lbEmployeeAttendanceDetails" runat="server" Font-Bold="False"
+                                    CausesValidation="False" PostBackUrl="~/Web/EmployeeAttendanceDetails.aspx "
+                                    Visible="false">                            
+                            Attendance Inquiry</asp:LinkButton>
+                                <asp:LinkButton ID="lbConfirmedAttendance" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/ConfirmedAttendance.aspx " Visible="false">                            
+                            Attendance Confirmation</asp:LinkButton>
+                                <asp:LinkButton ID="lbEmployeeOTTatUT" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/EmployeeAttendanceDetailsUnderDefinedShift.aspx " Visible="false">                            
+                            Over-Time/Tardiness/Under-Time</asp:LinkButton>
+                            </div>
+                        </li>--%>
+                        <%--<li runat="server" id="liManager"><a href="#" onmouseover="mopen('m4')" onmouseout="mclosetime()">
+                            Manager</a>
+                            <div id="m4" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                                <asp:LinkButton ID="lbDeptAttendanceDetails" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/DeptAttendanceDetails.aspx" Visible="false">
+                            Department Attendance Details</asp:LinkButton>
+                                <asp:LinkButton ID="lbApproveAttendance" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/ApproveAttendance.aspx" Visible="false">                           
+                            Approve Amendment</asp:LinkButton>
+                                <asp:LinkButton ID="lbOTApprove" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/OverTimeApproval.aspx" Visible="false">                           
+                            Approve OT</asp:LinkButton>
+                                <asp:LinkButton ID="lbOTPriorApproval" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/OTPriorApproval.aspx" Visible="false">                           
+                            OT Prior Approval</asp:LinkButton>
+                                <asp:LinkButton ID="lbOTPriorApprover" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/OTPriorApprover.aspx" Visible="false">                           
+                            OT Prior Approver</asp:LinkButton>
+                            </div>
+                        </li>--%>
+                       <%-- <li runat="server" id="liHRDepartment"><a href="#" onmouseover="mopen('m5')" onmouseout="mclosetime()">
+                            HR Department</a>
+                            <div id="m5" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                                <asp:LinkButton ID="lbAttendanceModificationByHR" runat="server" Font-Bold="False"
+                                    CausesValidation="False" PostBackUrl="~/Web/AttendanceModification_HR.aspx" Visible="false">
+                            Attendance Amendment</asp:LinkButton>
+                                <asp:LinkButton ID="lbApproveAttendanceByHR" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/ApproveAttendanceByHR.aspx" Visible="false">                         
+                             Approve Amendment</asp:LinkButton>
+                                <asp:LinkButton ID="lbAttendanceInquiryHR" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/BranchDeptAttendanceInquiry.aspx" Visible="false">
+                            Branch/ Dept Attendance Inquiry</asp:LinkButton>
+                                <asp:LinkButton ID="lbLateAttendanceLeaceDeduction" runat="server" Font-Bold="False"
+                                    CausesValidation="False" PostBackUrl="~/Web/LateAttendance.aspx" Visible="false">
+                            Leave for Late Attendances</asp:LinkButton>
+                                <asp:LinkButton ID="lbLateAttendanceLeaceDeductionShiftBase" runat="server" Font-Bold="False"
+                                    CausesValidation="False" PostBackUrl="~/Web/LeaveDeductionForLateAttendance.aspx"
+                                    Visible="false">
+                            Leave for Late Attendances (NEW)</asp:LinkButton>
+                                <asp:LinkButton ID="lbLateAttenForTREmployee" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/LateAttenTREmployees.aspx" Visible="false">
+                            Late Attendances TR</asp:LinkButton>
+                                <asp:LinkButton ID="lbLateAttenApprove" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/LateAttendanceApproval.aspx" Visible="false">
+                            LV Deduct for Late Attendances</asp:LinkButton>
+                                <asp:LinkButton ID="lbLVDeductForLateAttenDetails" runat="server" Font-Bold="False"
+                                    CausesValidation="False" PostBackUrl="~/Web/LVDeductForLateAttendDetails.aspx"
+                                    Visible="false">                           
+                            LV Deduct For LateAttendDetails</asp:LinkButton>
+                            </div>
+                        </li>--%>
+                       <%-- <li runat="server" id="li1"><a href="#" onmouseover="mopen('m6')" onmouseout="mclosetime()">
+                            Reports</a>
+                            <div id="m6" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                                <asp:LinkButton ID="lbNonAttendance" runat="server" Font-Bold="False" CausesValidation="False"
+                                    PostBackUrl="~/Web/Notmark.aspx" Visible="false">                           
+                            Non attendance</asp:LinkButton>                               
+                            </div>
+                        </li>--%>
+                    </ul>
+                </div>
+            </div>
+            <div class="contant-area">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class="footer">
+                <div class="footer-text">
+                    Copyright © 2015 iOM Lanka (Pvt) Ltd. All Rights Reserved.
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</body>
+</html>
